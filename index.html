@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>"Super food"</title>
+    <link rel="stylesheet" href="stylesheets/css/header.css">
+    <link rel="stylesheet" href="stylesheets/css/body.css">
+    <script rel="text/javascript" src="scripts/javascript/validation.js"></script>
+  </head>
+  <body onload="addEventToSubmit()">
+    <div id="titulo"><img src="images/titulo.png">
+      <p>Super food!</p>
+    </div>
+    <div id="cuerpo">
+      <h1>Pida su comida a domicilio</h1>
+      <div class="datos">
+        <form name="pedido" action="views/order.html" method="get">
+          <fieldset>
+            <legend>Datos personales</legend>
+            <table>
+              <tr>
+                <td>Nombre <span>(*)</span>:
+                  <input type="text" name="nombre" onblur="validateNombreApellidos(this)" required class="texto">
+                  <label id="alertanombre" class="oculto">El nombre no puede contener números</label>
+                </td>
+                <td>Apellidos <span>(*)</span>:
+                  <input type="text" name="apellidos" onblur="validateNombreApellidos(this)" required class="texto">
+                  <label id="alertaapellidos" class="oculto">Los paellidos no puede contener números</label>
+                </td>
+              </tr>
+              <tr>
+                <td>NIF <span>(*)</span>:
+                  <input type="text" name="nif" onblur="validateNif(this)" required class="texto">
+                  <label id="alertanif" class="oculto">El NIF debe tener 8 números y una letra separada por un guión</label>
+                </td>
+                <td>Dirección <span>(*)</span>:
+                  <input type="text" name="direccion" onblur="validateDireccion(this)" required class="texto">
+                  <label id="alertadireccion" class="oculto">La dirección es obligatoria</label>
+                </td>
+              </tr>
+              <tr>
+                <td>Cófigo postal <span>(*)</span>:
+                  <input type="number" name="codigopostal" onblur="validateCodigoPostal(this)" required class="texto">
+                  <label id="alertacodigopostal" class="oculto">El código postal debe tener cinco digitos</label>
+                </td>
+                <td>Correo electrónico:
+                  <input type="email" name="email" onblur="validateEmail(this)" class="texto">
+                  <label id="alertaemail" class="oculto">El email debe ser de un formato correcto (a@a.com)</label>
+                </td>
+              </tr>
+              <tr>
+                <td>Teléfono:
+                  <input type="number" name="telefono" onblur="validateTelefono(this)" class="texto">
+                  <label id="alertatelefono" class="oculto">El teléfono debe tener cinco digitos</label>
+                </td>
+              </tr>
+            </table>
+            <label id="alertadatos" class="oculto">Es requisito que introduzca o el email o un teléfono</label>
+          </fieldset>
+          <fieldset>
+            <legend>Pedido</legend>Primer plato :
+            <select id="primerplato">
+              <option value="a">a</option>
+              <option value="b">b</option>
+              <option value="c">c</option>
+            </select><br><br>Segundo plato :
+            <select id="segundoplato">
+              <option value="z">z</option>
+              <option value="v">v</option>
+              <option value="y">y</option>
+              <option value="w">w</option>
+            </select><br><br>
+            <div class="ingredientes">
+              <fieldset>
+                <legend>Ingredientes del segundo plato</legend>
+                <label>
+                  <input type="checkbox" name="ingrediente" onClick="validateIngredientes(this)">ingrediente1
+                </label>
+                <label>
+                  <input type="checkbox" name="ingrediente" onClick="validateIngredientes(this)">ingrediente2
+                </label>
+                <label>
+                  <input type="checkbox" name="ingrediente" onClick="validateIngredientes(this)">ingrediente3
+                </label>
+                <label>
+                  <input type="checkbox" name="ingrediente" onClick="validateIngredientes(this)">ingrediente4
+                </label>
+                <label>
+                  <input type="checkbox" name="ingrediente" onClick="validateIngredientes(this)">ingrediente5
+                </label>
+              </fieldset><br>
+              <label id="alertaingredientes" class="oculto">Solo se pueden seleccionar tres ingredientes</label>
+            </div><br>Bebida :
+            <select id="bebida">
+              <option value="b1">b1</option>
+              <option value="b2">b2</option>
+              <option value="b3">b3</option>
+              <option value="b4">b4</option>
+              <option value="b5">b5</option>
+            </select><br><br>
+            <table id="precios">
+              <tr>
+                <td>Producto</td>
+                <td>Precio</td>
+              </tr>
+              <tr>
+                <td>a</td>
+                <td>1€</td>
+              </tr>
+              <tr>
+                <td>b</td>
+                <td>2€</td>
+              </tr>
+              <tr>
+                <td>a</td>
+                <td>3€</td>
+              </tr>
+              <tr>
+                <td>c</td>
+                <td>3€</td>
+              </tr>
+              <tr>
+                <td>z</td>
+                <td>4€</td>
+              </tr>
+              <tr>
+                <td>v</td>
+                <td>5€</td>
+              </tr>
+              <tr>
+                <td>y</td>
+                <td>6€</td>
+              </tr>
+              <tr>
+                <td>b1</td>
+                <td>6€</td>
+              </tr>
+              <tr>
+                <td>b2</td>
+                <td>2€</td>
+              </tr>
+              <tr>
+                <td>b3</td>
+                <td>5€</td>
+              </tr>
+              <tr>
+                <td>b4</td>
+                <td>1€</td>
+              </tr>
+              <tr>
+                <td>b5</td>
+                <td>7€</td>
+              </tr>
+            </table>
+          </fieldset>
+          <div class="descuento">Cupón descuento:
+            <input type="text" name="descuento" onblur="cuponDescuento(this)">
+            <label id="alertadescuento" class="oculto">El codigo de descuento no es correcto</label>
+          </div>Precio total:
+          <input id="preciototal" type="text" name="preciototal" value="0" readonly><br>
+          <input id="send" type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

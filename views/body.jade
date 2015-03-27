@@ -1,0 +1,161 @@
+div#cuerpo
+	//- img.background(src='images/stardust.png')
+	h1 Pida su comida a domicilio
+
+	div.datos
+		form(name='pedido', action='views/order.html', method='get')
+			fieldset
+				legend Datos personales
+				table
+					tr
+						td
+							| Nombre 
+							span (*)
+							|:
+							input.texto(type='text', name='nombre', onblur='validateNombreApellidos(this)', required)
+							label#alertanombre.oculto
+								| El nombre no puede contener números
+						td
+							| Apellidos 
+							span (*)
+							|:
+							input.texto(type='text', name='apellidos', onblur='validateNombreApellidos(this)', required)
+							label#alertaapellidos.oculto
+								| Los paellidos no puede contener números
+					tr
+						td
+							| NIF 
+							span (*)
+							|:
+							input.texto(type='text', name='nif', onblur='validateNif(this)', required)
+							label#alertanif.oculto
+								| El NIF debe tener 8 números y una letra separada por un guión
+						td
+							| Dirección 
+							span (*)
+							|:
+							input.texto(type='text', name='direccion', onblur='validateDireccion(this)' required)
+							label#alertadireccion.oculto
+								| La dirección es obligatoria
+					tr
+						td
+							| Cófigo postal 
+							span (*)
+							|:
+							input.texto(type='number', name='codigopostal', onblur='validateCodigoPostal(this)', required)
+							label#alertacodigopostal.oculto
+								| El código postal debe tener cinco digitos
+						td
+							| Correo electrónico:
+							input.texto(type='email', name='email', onblur='validateEmail(this)')
+							label#alertaemail.oculto
+								| El email debe ser de un formato correcto (a@a.com)
+					tr
+						td
+							| Teléfono:
+							input.texto(type='number', name='telefono', onblur='validateTelefono(this)')
+							label#alertatelefono.oculto
+								| El teléfono debe tener cinco digitos
+
+				label#alertadatos.oculto
+					| Es requisito que introduzca o el email o un teléfono
+			fieldset
+				legend Pedido
+				| Primer plato :
+				select#primerplato
+					option(value='a') a
+					option(value='b') b
+					option(value='c') c
+				br
+				br
+				| Segundo plato :
+				select#segundoplato
+					option(value='z') z
+					option(value='v') v
+					option(value='y') y
+					option(value='w') w
+				br
+				br
+
+				div.ingredientes
+					fieldset
+						legend Ingredientes del segundo plato
+						label
+							input(type='checkbox', name='ingrediente', onClick='validateIngredientes(this)')
+							|ingrediente1
+						label
+							input(type='checkbox', name='ingrediente', onClick='validateIngredientes(this)')
+							|ingrediente2
+						label
+							input(type='checkbox', name='ingrediente', onClick='validateIngredientes(this)')
+							|ingrediente3
+						label
+							input(type='checkbox', name='ingrediente', onClick='validateIngredientes(this)')
+							|ingrediente4
+						label
+							input(type='checkbox', name='ingrediente', onClick='validateIngredientes(this)')
+							|ingrediente5
+					br
+					label#alertaingredientes.oculto
+						| Solo se pueden seleccionar tres ingredientes
+
+				br
+				| Bebida :
+				select#bebida
+					option(value='b1') b1
+					option(value='b2') b2
+					option(value='b3') b3
+					option(value='b4') b4
+					option(value='b5') b5
+				br
+				br
+				table#precios
+					tr
+						td Producto
+						td Precio
+					tr
+						td a
+						td 1€
+					tr
+						td b
+						td 2€
+					tr
+						td a
+						td 3€
+					tr
+						td c
+						td 3€
+					tr
+						td z
+						td 4€
+					tr
+						td v
+						td 5€
+					tr
+						td y
+						td 6€
+					tr
+						td b1
+						td 6€
+					tr
+						td b2
+						td 2€
+					tr
+						td b3
+						td 5€
+					tr
+						td b4
+						td 1€
+					tr
+						td b5
+						td 7€
+
+			div.descuento
+				| Cupón descuento:
+				input(type='text', name='descuento', onblur='cuponDescuento(this)')
+				label#alertadescuento.oculto
+					| El codigo de descuento no es correcto
+			| Precio total:
+			input#preciototal(type='text', name='preciototal', value='0', readonly)
+			br
+			input#send(type='submit', value='Submit')
