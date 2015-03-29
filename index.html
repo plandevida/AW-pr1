@@ -59,12 +59,12 @@
           </fieldset>
           <fieldset>
             <legend>Pedido</legend>Primer plato :
-            <select id="primerplato">
+            <select id="primerplato" onchange="calculaPrecio()">
               <option value="a">a</option>
               <option value="b">b</option>
               <option value="c">c</option>
             </select><br><br>Segundo plato :
-            <select id="segundoplato">
+            <select id="segundoplato" onchange="calculaPrecio()">
               <option value="z">z</option>
               <option value="v">v</option>
               <option value="y">y</option>
@@ -91,7 +91,7 @@
               </fieldset><br>
               <label id="alertaingredientes" class="oculto">Solo se pueden seleccionar tres ingredientes</label>
             </div><br>Bebida :
-            <select id="bebida">
+            <select id="bebida" onchange="calculaPrecio()">
               <option value="b1">b1</option>
               <option value="b2">b2</option>
               <option value="b3">b3</option>
@@ -110,10 +110,6 @@
               <tr>
                 <td>b</td>
                 <td>2€</td>
-              </tr>
-              <tr>
-                <td>a</td>
-                <td>3€</td>
               </tr>
               <tr>
                 <td>c</td>

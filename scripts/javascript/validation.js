@@ -3,6 +3,8 @@ function addEventToSubmit() {
 	button.addEventListener('click', function(event) {
 		validateSubmit(event);
 	});
+
+	calculaPrecio();
 }
 
 function validateSubmit(event) {
@@ -167,4 +169,31 @@ function cuponDescuento(textfield) {
 			this.document.getElementById("alertadescuento").style.display = "block"
 		}
 	}
+}
+
+var precios = {"a":"1","b":"2","c":"3","z":"4","v":"5","y":"6","b1":"6","b2":"2","b3":"5","b4":"1","b5":"7"};
+
+function calculaPrecio() {
+
+	var precio = 0;
+
+	var primerplato = this.document.getElementById("primerplato");
+	var segundoplato = this.document.getElementById("segundoplato");
+	var bebidas = this.document.getElementById("bebida");
+
+	var textprimer = primerplato.options[primerplato.selectedIndex].text
+	var textsegundo = segundoplato.options[segundoplato.selectedIndex].text
+	var textbebida = bebidas.options[bebidas.selectedIndex].text
+
+	if (precios.hasOwnProperty(textprimer)) {
+		precio = +precio + +precios[textprimer];
+	}
+	if (precios.hasOwnProperty(textsegundo)) {
+		precio += +precio + +precios[textsegundo];
+	}
+	if (precios.hasOwnProperty(textbebida)) {
+		precio += +precio + +precios[textbebida];
+	}
+
+	this.document.getElementById("preciototal").value = precio;
 }

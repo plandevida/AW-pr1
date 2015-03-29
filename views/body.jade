@@ -62,14 +62,14 @@ div#cuerpo
 			fieldset
 				legend Pedido
 				| Primer plato :
-				select#primerplato
+				select#primerplato(onchange='calculaPrecio()')
 					option(value='a') a
 					option(value='b') b
 					option(value='c') c
 				br
 				br
 				| Segundo plato :
-				select#segundoplato
+				select#segundoplato(onchange='calculaPrecio()')
 					option(value='z') z
 					option(value='v') v
 					option(value='y') y
@@ -101,7 +101,7 @@ div#cuerpo
 
 				br
 				| Bebida :
-				select#bebida
+				select#bebida(onchange='calculaPrecio()')
 					option(value='b1') b1
 					option(value='b2') b2
 					option(value='b3') b3
@@ -119,9 +119,6 @@ div#cuerpo
 					tr
 						td b
 						td 2€
-					tr
-						td a
-						td 3€
 					tr
 						td c
 						td 3€
